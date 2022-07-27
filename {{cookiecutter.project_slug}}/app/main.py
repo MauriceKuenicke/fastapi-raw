@@ -27,7 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-{% if cookiecutter.use_website_template == 'no' %}
+
 @app.get("/", include_in_schema=False)
 async def root(request: Request):
     return templates.TemplateResponse(
@@ -35,7 +35,7 @@ async def root(request: Request):
         context={"request": request},
     )
 
-{%- elif cookiecutter.use_website_template == 'yes' %}
+{%- if cookiecutter.use_website_template == 'yes' %}
 ########### Template Sites ########### 
 @app.get("/elements", include_in_schema=False)
 async def root(request: Request):
